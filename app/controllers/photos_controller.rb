@@ -26,14 +26,10 @@ class PhotosController < ApplicationController
     redirect_to("http://localhost:3000/photos")
   end
 
-
-
-  def show
+  def destroy
     @id = params["id"]
-    @source = Photo.find(@id).source
-    @caption = Photo.find(@id).caption
-    # @caption = Photo.find({ :id => @id }).caption
-    render("photos/show.html.erb")
+    Photo.find(@id).destroy
+    redirect_to("http://localhost:3000/photos")
   end
 
 end
